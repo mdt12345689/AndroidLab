@@ -1,14 +1,13 @@
 {
   "project_info": {
-    "project_number": "349236831525",
-    "firebase_url": "https://fooddeliveryapp-63974-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "fooddeliveryapp-63974",
-    "storage_bucket": "fooddeliveryapp-63974.firebasestorage.app"
+    "project_number": "161702451797",
+    "project_id": "fooddeliveryapp-1cf95",
+    "storage_bucket": "fooddeliveryapp-1cf95.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:349236831525:android:09d2bd43c16f8010df66cc",
+        "mobilesdk_app_id": "1:161702451797:android:d0ce8ef25fc0fa52ba12dc",
         "android_client_info": {
           "package_name": "com.example.fooddeliveryapplication"
         }
@@ -16,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyClNK0iawBsuiUoJReTWPKEprT2OAU-zNc"
+          "current_key": "AIzaSyByDkZLtAdyCcputARSYFCT0otWkl3DLo8"
         }
       ],
       "services": {
