@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.fooddeliveryapplication.Fragments.Home.LoginFragment;
 import com.example.fooddeliveryapplication.Fragments.Home.SignUpFragment;
-
+// Sign up
 public class LoginSignUpAdapter extends FragmentStateAdapter {
 
     public LoginSignUpAdapter(@NonNull FragmentActivity fragmentActivity) {
