@@ -8,6 +8,7 @@
     android:weightSum="10"
     tools:context=".Activities.MyShop.MyFoodActivity">
 
+    <!-- Header - Nút quay lại -->
     <LinearLayout
         android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
@@ -35,6 +36,7 @@
             android:textSize="22sp" />
     </LinearLayout>
 
+    <!-- Vùng chứa danh sách sản phẩm -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -42,15 +44,14 @@
         app:layout_constraintBottom_toTopOf="@+id/flpAddFood"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
         </androidx.recyclerview.widget.RecyclerView>
     </FrameLayout>
 
+    <!-- Nút thêm sản phẩm -->
     <Button
         android:id="@+id/flpAddFood"
         android:layout_width="match_parent"
