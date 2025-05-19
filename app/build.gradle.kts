@@ -57,7 +57,6 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.airbnb.android:lottie:6.0.0")
     implementation("com.tbuonomo:dotsindicator:4.3")
-//    implementation("com.etebarian:meow-bottom-navigation:1.2.0")
     implementation("com.github.Foysalofficial:NafisBottomNav:5.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
