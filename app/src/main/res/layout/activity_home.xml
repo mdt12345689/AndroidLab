@@ -43,7 +43,7 @@
 
         </LinearLayout>
 
-
+// Change nav implement
         <com.nafis.bottomnavigation.NafisBottomNavigation
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
