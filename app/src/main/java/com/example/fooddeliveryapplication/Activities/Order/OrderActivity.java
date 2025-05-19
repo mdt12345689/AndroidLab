@@ -50,7 +50,7 @@ public class OrderActivity extends AppCompatActivity {
             }
         });
     }
-
+// update order by AnhTuan
     private void initUI() {
         OrderViewPaperAdapter viewPaperAdapter = new OrderViewPaperAdapter(OrderActivity.this, dsCurrentOrder, dsHistoryOrder, userId);
         binding.viewPaper2.setAdapter(viewPaperAdapter);
