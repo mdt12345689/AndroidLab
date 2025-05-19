@@ -8,6 +8,7 @@
     android:weightSum="10"
     tools:context=".Activities.MyShop.AddFoodActivity">
 
+    <!-- Header - Nút quay lại -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -29,10 +30,9 @@
             android:gravity="center_vertical"
             android:text="My Shop"
             android:textSize="22sp" />
-
     </LinearLayout>
 
-
+    <!-- Hình ảnh của sản phẩm -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -47,12 +47,14 @@
             android:orientation="vertical"
             android:weightSum="2">
 
+            <!-- 2 hình trên hàng đầu -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <!-- Viền -->
                 <ImageView
                     android:id="@+id/imgProduct1"
                     android:layout_width="100dp"
@@ -65,6 +67,8 @@
                     app:layout_constraintEnd_toStartOf="@+id/guideline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
+                
+                <!-- Hình sản phẩm -->
                 <ImageView
                     android:id="@+id/layout1"
                     android:layout_width="75dp"
@@ -78,6 +82,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/baseline_photo_album_24" />
 
+                <!-- Chọn hình từ máy -->
                 <ImageView
                     android:id="@+id/add_image_1"
                     android:layout_width="50dp"
@@ -151,6 +156,7 @@
                     app:layout_constraintGuide_begin="185dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!-- 2 hình dưới hàng sau -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -170,6 +176,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/guideline2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
+                
                 <ImageView
                     android:id="@+id/layout3"
                     android:layout_width="75dp"
@@ -255,36 +262,10 @@
                     android:orientation="vertical"
                     app:layout_constraintGuide_begin="185dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:weightSum="2">-->
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/imgProduct3"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_margin="14dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:padding="5dp"-->
-<!--                    android:scaleType="centerCrop"-->
-<!--                    app:srcCompat="@drawable/default_image" />-->
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/imgProduct4"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_margin="14dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:padding="5dp"-->
-<!--                    android:scaleType="centerCrop"-->
-<!--                    app:srcCompat="@drawable/default_image" />-->
-<!--            </LinearLayout>-->
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <!-- Thêm layout khác bên dưới -->
     <include
         android:id="@+id/lnAddFood"
         layout="@layout/layout_information_food"
@@ -292,6 +273,4 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:layout_weight="5.8" />
-
-
 </LinearLayout>
