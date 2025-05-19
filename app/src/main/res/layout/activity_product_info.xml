@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Header -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
@@ -13,6 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
 
+        <!-- Nút quay lại -->
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
@@ -24,6 +26,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_arrow_back_24" />
 
+        <!-- Nút thêm yêu thích -->
         <ImageButton
             android:id="@+id/btnAddFavourite"
             android:layout_width="wrap_content"
@@ -35,6 +38,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_favourite" />
 
+        <!-- Nút bỏ yêu thích -->
         <ImageButton
             android:id="@+id/btnCancelFavourite"
             android:layout_width="wrap_content"
@@ -46,6 +50,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_pink_favourite" />
 
+        <!-- Nút chỉnh sửa -->
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,6 +62,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/ic_black_edit"/>
 
+        <!-- Nút chat -->
         <ImageButton
             android:id="@+id/btnChat"
             android:layout_width="30dp"
@@ -68,9 +74,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.533"
             app:srcCompat="@drawable/baseline_mark_unread_chat_alt_24" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- Vùng nội dung -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
@@ -100,6 +106,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <!-- Slide hình ảnh -->
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/pagerProductImage"
                     android:layout_width="0dp"
@@ -110,6 +117,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <!-- Dot Indicator -->
                 <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
                     android:id="@+id/tabDots"
                     android:layout_width="wrap_content"
@@ -128,7 +136,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/pagerProductImage"
                     app:layout_constraintVertical_bias="0.51" />
 
-
+                <!-- Tên sản phẩm -->
                 <TextView
                     android:id="@+id/txtNameProduct"
                     android:layout_width="match_parent"
@@ -146,6 +154,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tabDots"
                     app:layout_constraintVertical_bias="0.5" />
 
+                <!-- Giá sản phẩm -->
                 <TextView
                     android:id="@+id/txtPriceProduct"
                     android:layout_width="wrap_content"
@@ -161,7 +170,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/txtNameProduct"
                     app:layout_constraintVertical_bias="0.5" />
 
-
+                <!-- Một số thông tin khác -->
                 <LinearLayout
                     android:id="@+id/linearLayout5"
                     android:layout_width="wrap_content"
@@ -175,6 +184,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/txtPriceProduct"
                     app:layout_constraintVertical_bias="0.5">
 
+                    <!-- Số lượng đã bán -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -191,6 +201,7 @@
                         android:text="100"
                         android:textSize="16sp" />
 
+                    <!-- Số lượt thích -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -207,6 +218,7 @@
                         android:text="100"
                         android:textSize="16sp" />
 
+                    <!-- Số lượng còn lại -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -225,6 +237,7 @@
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!-- Thông tin đánh giá, mô tảtả và comment -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -236,7 +249,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
                 app:layout_constraintVertical_bias="1.0">
 
-
+                <!-- Đánh giá sao -->
                 <TextView
                     android:id="@+id/txtRating"
                     android:layout_width="wrap_content"
@@ -273,6 +286,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <!-- Phần mô tả -->
                 <TextView
                     android:id="@+id/txt1"
                     android:layout_width="wrap_content"
@@ -302,6 +316,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/txt1"
                     app:layout_constraintWidth_percent="0.8" />
 
+                <!-- Phần comment -->
                 <TextView
                     android:id="@+id/txtComment"
                     android:layout_width="wrap_content"
@@ -328,13 +343,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtComment"
                     app:layout_constraintVertical_bias="0.5" />
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <!-- Nút thêm vào giỏ hàng -->
     <Button
         android:id="@+id/btnAddToCart"
         android:layout_width="0dp"
