@@ -33,7 +33,7 @@
             android:textColor="@color/app_color2"
             android:textSize="24sp"
             android:textStyle="bold" />
-
+        <!--        email-->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                 android:lines="1"
                 android:id="@+id/edtEmail"/>
         </com.google.android.material.textfield.TextInputLayout>
-
+        <!-- Password -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
