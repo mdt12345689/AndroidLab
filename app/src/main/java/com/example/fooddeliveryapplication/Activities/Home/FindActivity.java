@@ -41,7 +41,7 @@ public class FindActivity extends AppCompatActivity {
         binding.recycleFoodFinded.setAdapter(adapter);
         initUI();
     }
-
+//fix home by AnhTuan
     private void initUI() {
         getWindow().setStatusBarColor(Color.parseColor("#E8584D"));
         getWindow().setNavigationBarColor(Color.parseColor("#E8584D"));
