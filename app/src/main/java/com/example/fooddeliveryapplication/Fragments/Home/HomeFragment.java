@@ -29,10 +29,10 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater,container,false);
 
         initUI();
-
+    
         return binding.getRoot();
     }
-
+    // fix home fragment
     private void initUI() {
         //Set adapter cho recycleView
         FoodDrinkAdapter adapter1=new FoodDrinkAdapter(HomeFragment.this, userId);
