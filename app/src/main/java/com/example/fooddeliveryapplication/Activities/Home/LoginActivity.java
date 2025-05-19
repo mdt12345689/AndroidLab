@@ -13,6 +13,8 @@ import com.example.fooddeliveryapplication.databinding.ActivityLoginBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
+// Login
+
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private LoginSignUpAdapter myFragmentAdapter;
