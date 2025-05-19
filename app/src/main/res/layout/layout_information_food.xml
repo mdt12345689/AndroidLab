@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <!-- Form nhập thông tin -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,6 +21,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <!-- Tiêu đề -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -29,6 +31,8 @@
                     android:fontFamily="@font/sfpro_bold"
                     android:textSize="24dp"
                     app:layout_constraintStart_toStartOf="parent"/>
+
+                <!-- Tên sản phẩm -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -38,6 +42,7 @@
                     android:layout_marginEnd="10dp"
                     app:startIconDrawable="@drawable/baseline_fastfood_24"
                     android:hint="Product name">
+                    
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -48,6 +53,7 @@
                         android:id="@+id/edtNameOfProduct"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Chọn kiểu sản phẩm -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -55,6 +61,7 @@
                     android:layout_marginTop="-10dp"
                     android:layout_marginEnd="30dp"
                     android:orientation="horizontal">
+                    
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -88,9 +95,9 @@
                             android:fontFamily="@font/sfpro_bold"
                             android:text="Drink" />
                     </RadioGroup>
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <!-- Giá sản phẩm -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,6 +107,7 @@
                     android:layout_marginEnd="10dp"
                     app:startIconDrawable="@drawable/baseline_monetization_on_24"
                     android:hint="Product price">
+                    
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -110,6 +118,7 @@
                         android:id="@+id/edtPrice"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Mô tả sản phẩm -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -119,6 +128,7 @@
                     android:layout_marginEnd="10dp"
                     app:startIconDrawable="@drawable/baseline_description_24"
                     android:hint="Description">
+                    
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -129,7 +139,7 @@
                         android:id="@+id/edtDescp"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-
+                <!-- Số lượng sản phẩm -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -139,6 +149,7 @@
                     android:layout_marginEnd="10dp"
                     app:startIconDrawable="@drawable/baseline_storage_24"
                     android:hint="Amount">
+                    
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -149,7 +160,7 @@
                         android:id="@+id/edtAmount"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-
+                <!-- Nút thêm sản phẩm -->
                 <Button
                     android:id="@+id/btnAddProduct"
                     android:layout_width="match_parent"
@@ -161,10 +172,7 @@
                     android:text="Add Food"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"/>
-
             </LinearLayout>
-
-
         </ScrollView>
     </LinearLayout>
 </LinearLayout>
