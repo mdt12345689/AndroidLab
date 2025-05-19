@@ -55,7 +55,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         loadingDialog=new LoadingDialog(this);
         loadingDialog.show();
     }
-
+// upadte detail
     @Override
     protected void onStart() {
         super.onStart();
