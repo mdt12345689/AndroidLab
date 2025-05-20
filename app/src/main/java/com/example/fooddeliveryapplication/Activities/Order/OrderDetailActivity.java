@@ -47,8 +47,8 @@ public class OrderDetailActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.parseColor("#E8584D"));
         getWindow().setNavigationBarColor(Color.parseColor("#E8584D"));
 
-        //Lấy Intent
-        Intent intent=getIntent();
+        //Lấy Intent   
+        Intent intent=getIntent();    
         //Khởi tạo dữ liệu
         currentBill= (Bill) intent.getSerializableExtra("Bill");
         userId = intent.getStringExtra("userId");
