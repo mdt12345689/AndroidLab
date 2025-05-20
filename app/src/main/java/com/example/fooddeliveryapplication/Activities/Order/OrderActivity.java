@@ -67,7 +67,7 @@ public class OrderActivity extends AppCompatActivity {
         })).attach();
         dialog.dismiss();
     }
-
+//update order active
     private void initData() {
         FirebaseDatabase.getInstance().getReference("Bills").addValueEventListener(new ValueEventListener() {
             @Override
