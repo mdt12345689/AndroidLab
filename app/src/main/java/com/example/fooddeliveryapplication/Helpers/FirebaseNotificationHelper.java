@@ -129,7 +129,7 @@ public class FirebaseNotificationHelper {
                     }
                 });
     }
-
+//
     public static Notification createNotification(String title, String content, String imageNotificationURL, String productId, String billId, String confirmId, User publisher) {
         Notification notification = new Notification();
         notification.setRead(false);
