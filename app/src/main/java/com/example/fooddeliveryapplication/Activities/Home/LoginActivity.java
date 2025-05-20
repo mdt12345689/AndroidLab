@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
         binding.tablayoutHome.addTab(binding.tablayoutHome.newTab().setText("Login"));
         binding.tablayoutHome.addTab(binding.tablayoutHome.newTab().setText("Sign Up"));
+        // Select tab event
         binding.tablayoutHome.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -53,14 +54,14 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
+        
         binding.viewpaper2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-
+            // chon Tab thi view doi
             @Override
             public void onPageSelected(int position) {
                 binding.tablayoutHome.selectTab(binding.tablayoutHome.getTabAt(position));
             }
-
+            // luot view thi tab doi
             @Override
             public void onPageScrollStateChanged(int state) {
                 super.onPageScrollStateChanged(state);
