@@ -29,6 +29,7 @@ public class OrderActivity extends AppCompatActivity {
     private LoadingDialog dialog;
 
     @Override
+    //update onCreate
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityOrderBinding.inflate(getLayoutInflater());
