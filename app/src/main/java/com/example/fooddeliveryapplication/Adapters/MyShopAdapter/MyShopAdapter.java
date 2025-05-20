@@ -41,7 +41,7 @@ public class MyShopAdapter extends RecyclerView.Adapter {
     private String userId;
 
     public MyShopAdapter(ArrayList<Product> ds, Context context,String id) {
-        viewBinderHelper.setOpenOnlyOne(true);
+        viewBinderHelper.setOpenOnlyOne(true); // Chỉ cho phép mở 1 item tại 1 thời điểm
         this.ds = ds;
         this.context = context;
         this.userId = id;
@@ -58,23 +58,32 @@ public class MyShopAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Product product = ds.get(position);
         ViewHolder viewHolder=(ViewHolder) holder;
+
+        // Swipe sản phẩm với ID ...
         viewBinderHelper.bind(viewHolder.binding.SwipeRevealLayout, product.getProductId());
 
+        // Hiển thị tên và giá
         viewHolder.binding.txtNameProdiuct.setText(product.getProductName());
         viewHolder.binding.txtPrice.setText(convertToMoney(product.getProductPrice()) + "đ");
+
+        // Load hình ảnh
         Glide.with(context)
                 .load(product.getProductImage1())
                 .placeholder(R.drawable.baseline_image_search_24)
                 .into(viewHolder.binding.imgFood);
+
+        // Xử lý sự kiện Delete
         viewHolder.binding.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Tạo thông báo xác nhận
                 new CustomAlertDialog(context,"Delete this product?");
+                // Chọn Yes
                 CustomAlertDialog.binding.btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         CustomAlertDialog.alertDialog.dismiss();
-
+                        // Cập nhật trạng thái deleted
                         FirebaseDatabase.getInstance().getReference("Products").child(product.getProductId()).child("state").setValue("deleted").addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -90,6 +99,7 @@ public class MyShopAdapter extends RecyclerView.Adapter {
                         });
                     }
                 });
+                // Chọn No
                 CustomAlertDialog.binding.btnNo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -99,6 +109,8 @@ public class MyShopAdapter extends RecyclerView.Adapter {
                 CustomAlertDialog.showAlertDialog();
             }
         });
+
+        // Xử lý sự kiện Edit
         viewHolder.binding.imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +123,7 @@ public class MyShopAdapter extends RecyclerView.Adapter {
             }
         });
 
+        // Xử lý sự kiện bấm vào sản phẩm để xem chi tiết
         viewHolder.binding.productContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,20 +150,22 @@ public class MyShopAdapter extends RecyclerView.Adapter {
         });
     }
 
+    // Kiểm tra rỗng
     @Override
     public int getItemCount() {
         return ds == null ? 0 : ds.size();
     }
 
+    // View Binding để truy cập View
     private static class ViewHolder extends RecyclerView.ViewHolder {
         private final LayoutFoodItemBinding binding;
-
         public ViewHolder(@NonNull LayoutFoodItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
     }
 
+    // Chuyển đổi số thành tiền
     private String convertToMoney(long price) {
         String temp = String.valueOf(price);
         String output = "";
@@ -161,14 +176,10 @@ public class MyShopAdapter extends RecyclerView.Adapter {
                 count = 3;
                 output = "," + temp.charAt(i) + output;
             }
-            else {
-                output = temp.charAt(i) + output;
-            }
+            else {output = temp.charAt(i) + output;}
         }
-
         if (output.charAt(0) == ',')
             return output.substring(1);
-
         return output;
     }
 }
