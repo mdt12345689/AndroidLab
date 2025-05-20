@@ -10,7 +10,7 @@ FIVEST là ứng dụng mua bán đồ ăn trực tuyến đóng vai trò quan t
 ## 📚 Giới thiệu
 
 
-FIVEST - Food delivery appplication là ứng dụng hỗ trợ người dùng có thể bày bán các mặt hàng kinh doanh của mình và hỗ trợ đặt mua các sản phẩm của nhà bán lẻ khác mà bản thân có nhu cầu đặt mua. Chỉ cần có internet, bạn có thể bày bán hoặc mua sản phẩm ở bất kỳ nơi nào. Nhóm dự án dự định phát triển khả năng tracking đơn hàng, tuy nhiên do thời gian đồ án có hạn nên chưa phát triển được. Các bạn có thể sử dụng điện thoại hệ điều hành Android và nhấn vào đây để tải phần mềm tham khảo thử, nếu hệ thống báo không được phép tải file từ nguồn lạ, vô setting và mở quyền tải file từ nguồn lạ cho ứng dụng mà bạn đang truy cập vào github (google):
+FIVEST - Food delivery appplication là ứng dụng hỗ trợ người dùng có thể bày bán các mặt hàng kinh doanh của mình và hỗ trợ đặt mua các sản phẩm của nhà bán lẻ khác mà bản thân có nhu cầu đặt mua. Chỉ cần có internet, bạn có thể bày bán hoặc mua sản phẩm ở bất kỳ nơi nào. Nhóm dự án dự định phát triển khả năng tracking đơn hàng, tuy nhiên do thời gian đồ án có hạn nên chưa phát triển được. 
 https://github.com/mdt12345689/AndroidLab
 
 
@@ -44,6 +44,6 @@ Ngoài ra còn một số chức năng khác, các bạn có thể xem thử khi
 
 
 ## 💕 Lời cảm ơn
-Bài tập lớn cơ bản đáp ứng các quy trình nghiệp vụ trong kinh doanh bán lẻ, tuy nhiên do đồ án được nhóm phát triển còn có quy mô khá nhỏ và kinh nghiệm chưa có nhiều nên vẫn còn một số hạn chế. Cảm ơn mọi người đã dành thời gian xem qua đồ án của chúng mình.
+Bài tập lớn cơ bản đáp ứng các quy trình nghiệp vụ trong kinh doanh bán lẻ, tuy nhiên do đồ án được nhóm phát triển còn có quy mô khá nhỏ và kinh nghiệm chưa có nhiều nên vẫn còn một số hạn chế. Cảm ơn mọi người đã dành thời gian xem bài tập lớn của chúng mình.
 
 Cảm ơn các thành viên trong nhóm đã chung tay đóng góp và xây dựng nên ứng dụng hoàn chỉnh này. 
