@@ -68,12 +68,15 @@ public class AddFoodActivity extends AppCompatActivity {
 
         getWindow().setStatusBarColor(Color.parseColor("#E8584D"));
         getWindow().setNavigationBarColor(Color.parseColor("#E8584D"));
-        //Nhận intent từ edit--------------
+
         Intent intentUpdate=getIntent();
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        // Xử lý trường hợp là cập nhật / sửa
         if (intentUpdate != null && intentUpdate.hasExtra("Product updating")) {
             productUpdate= (Product) intentUpdate.getSerializableExtra("Product updating");
             checkUpdate=true;
+            // Lấy dữ liệu sản phẩm
             binding.lnAddFood.btnAddProduct.setText("Update");
             binding.lnAddFood.edtNameOfProduct.setText(productUpdate.getProductName());
             binding.lnAddFood.edtAmount.setText(productUpdate.getRemainAmount()+"");
@@ -89,6 +92,7 @@ public class AddFoodActivity extends AppCompatActivity {
             imgOld3=productUpdate.getProductImage3();
             imgOld4=productUpdate.getProductImage4();
 
+            // Xử lý img nếu null
             if (!imgOld1.isEmpty())
             {
                 binding.layout1.setVisibility(View.GONE);
@@ -127,7 +131,8 @@ public class AddFoodActivity extends AppCompatActivity {
             }
 
         }
-        //---------------------------------
+
+        // Xử lý sự kiện thêm hình
         position = -1;
         binding.addImage1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,6 +174,8 @@ public class AddFoodActivity extends AppCompatActivity {
                 pickImageLauncher.launch(intent);
             }
         });
+
+        // Xử lý sự kiện Add / Update
         binding.lnAddFood.btnAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -179,6 +186,8 @@ public class AddFoodActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // Xử lý sự kiện Back
         binding.imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -187,37 +196,7 @@ public class AddFoodActivity extends AppCompatActivity {
         });
     }
 
-    private void deleteOldImage(int position) {
-        StringBuilder imageURL=new StringBuilder();
-        handleImagePosition(imageURL,position);
-        if (!imageURL.toString().isEmpty()) {
-            FirebaseStorage.getInstance().getReferenceFromUrl(imageURL.toString()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        if (position == FOURTH_IMAGE) {
-                            uploadDialog.dismiss();
-                            new SuccessfulToast(AddFoodActivity.this, "Delete old image successfully!").showToast();
-                            finish();
-                        } else {
-                            deleteOldImage(position+1);
-                        }
-                    } else {
-                        new FailToast(AddFoodActivity.this, "Error delete image: " + imageURL).showToast();
-                    }
-                }
-            });
-        } else {
-            if (position!=FOURTH_IMAGE) {
-                deleteOldImage(position + 1);
-            } else {
-                uploadDialog.dismiss();
-                new SuccessfulToast(AddFoodActivity.this, "Delete old image successfully!").showToast();
-                finish();
-            }
-        }
-    }
-
+    // Xóa hình cũ nếu thay bằng hình mới
     private void handleImagePosition(StringBuilder imageURL, int position) {
         if (position==FIRST_IMAGE) {
             if (!img1.equals(imgOld1)) {
@@ -238,11 +217,13 @@ public class AddFoodActivity extends AppCompatActivity {
         }
     }
 
+    // Mở hộp thoại chọn hình ảnh từ thiết bị
     public void pickImg() {
         Dexter.withContext(this)
                 .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 .withListener(new PermissionListener() {
                     @Override
+                    // Nếu quyền được cấp
                     public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
                         Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
                         intent.setType("image/*");
@@ -250,26 +231,30 @@ public class AddFoodActivity extends AppCompatActivity {
                     }
 
                     @Override
+                    // Nếu từ chối cấp quyền
                     public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
                         new FailToast(AddFoodActivity.this, "Permission denied!").showToast();
                     }
 
                     @Override
+                    // Nếu yêu cầu lý do
                     public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
                         permissionToken.continuePermissionRequest();
                         new FailToast(AddFoodActivity.this, "Permission denied!").showToast();
 
                     }
                 }).check();
-
     }
 
+    // Kiểm tra dữ liệu
     public boolean checkLoi() {
         try {
             String name=binding.lnAddFood.edtNameOfProduct.getText().toString();
             double price= Double.parseDouble(binding.lnAddFood.edtPrice.getText().toString() + ".0");
             int amount=Integer.parseInt(binding.lnAddFood.edtAmount.getText().toString());
             String description=binding.lnAddFood.edtDescp.getText().toString();
+
+            // Các điều kiện
             if (!checkUpdate) {
                 if (img1.isEmpty() || img2.isEmpty() || img3.isEmpty() || img4.isEmpty()) {
                     createDialog("Điền đủ 4 hình").create().show();
@@ -328,6 +313,7 @@ public class AddFoodActivity extends AppCompatActivity {
     }
 
     public void uploadProduct(Product tmp) {
+        // Nếu là cập nhật
         if (checkUpdate) {
             tmp.setProductId(productUpdate.getProductId());
             FirebaseDatabase.getInstance().getReference().child("Products").child(productUpdate.getProductId()).setValue(tmp).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -335,6 +321,7 @@ public class AddFoodActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 StringBuilder imageURL=new StringBuilder();
+                                // Xử lý hình cũ
                                 handleImagePosition(imageURL,position);
 
                                 if (!imageURL.toString().isEmpty()) {
@@ -352,7 +339,7 @@ public class AddFoodActivity extends AppCompatActivity {
                         }
                     });
         }
-        else {
+        else { // Nếu là thêm mới
             DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Products").push();
             tmp.setProductId(reference.getKey()+"");
             reference.setValue(tmp).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -372,7 +359,9 @@ public class AddFoodActivity extends AppCompatActivity {
         }
     }
 
+    // Upload hình ảnh
     public void uploadImage(int position) {
+        // Kiểm tra vị trí hình
         Uri uri=uri1;
         if (position==SECOND_IMAGE) {
             uri=uri2;
@@ -384,6 +373,7 @@ public class AddFoodActivity extends AppCompatActivity {
             uri=uri4;
         }
         if (uri!=null) {
+            // Upload hình ảnh lên Firebase Storage
             FirebaseStorage storage=FirebaseStorage.getInstance();
             StorageReference reference= storage.getReference().child("Product Image").child(System.currentTimeMillis()+"");
             reference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -392,6 +382,7 @@ public class AddFoodActivity extends AppCompatActivity {
                     reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
+                            // Nếu đã là hình cuối thì tạo sản phẩm mới
                             if (position == FOURTH_IMAGE) {
                                 String img4=uri.toString();
                                 String name=binding.lnAddFood.edtNameOfProduct.getText().toString();
@@ -401,7 +392,7 @@ public class AddFoodActivity extends AppCompatActivity {
                                 Product tmp = new Product("null", name, img1, img2, img3, img4, Integer.valueOf(price),
                                         binding.lnAddFood.rbFood.isChecked() ? "Food" : "Drink", Integer.valueOf(amount), 0, description, 0.0, 0, userId, "");
                                 uploadProduct(tmp);
-                            } else {
+                            } else { // Nếu không phải hình cuối thì pos +1 để up ảnh tiếp
                                 if (position==FIRST_IMAGE)  {
                                     img1=uri.toString();
                                 } else if (position==SECOND_IMAGE) {
@@ -415,14 +406,15 @@ public class AddFoodActivity extends AppCompatActivity {
                     });
                 }
             });
-        } else {
+        } else { // Nếu đang cập nhật (pos =-1)
+            // Giữ lại hình cũ
             if (position!=FOURTH_IMAGE) {
                 if (position == FIRST_IMAGE) img1 = imgOld1;
                 else if (position == SECOND_IMAGE) img2 = imgOld2;
                 else if (position == THIRD_IMAGE) img3 = imgOld3;
                 uploadImage(position+1);
             }
-            else {
+            else { // Update sản phẩm
                 img4=imgOld4;
                 String name=binding.lnAddFood.edtNameOfProduct.getText().toString();
                 String price=binding.lnAddFood.edtPrice.getText().toString();
@@ -435,6 +427,8 @@ public class AddFoodActivity extends AppCompatActivity {
         }
 
     }
+
+    // Lấy hình ảnh từ hệ thống
     ActivityResultLauncher pickImageLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result -> {
         if (result.getResultCode()==RESULT_OK) {
             Intent intent=result.getData();
@@ -469,6 +463,7 @@ public class AddFoodActivity extends AppCompatActivity {
         }
     });
 
+    // Kiểm tra quyền và xử lý
     private void checkRuntimePermission() {
         if (isPermissionGranted(Manifest.permission.READ_EXTERNAL_STORAGE)) {
             pickImg();
@@ -479,6 +474,7 @@ public class AddFoodActivity extends AppCompatActivity {
         }
     }
 
+    // Callback khi người dùng phản hồi yêu cầu quyền
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -493,6 +489,7 @@ public class AddFoodActivity extends AppCompatActivity {
         }
     }
 
+    // Tạo dialog giải thích lý do cần quyền
     private AlertDialog.Builder buildAlertPermissionDialog() {
         AlertDialog.Builder builderDialog=new AlertDialog.Builder(this);
         builderDialog.setTitle("Notice")
@@ -513,6 +510,7 @@ public class AddFoodActivity extends AppCompatActivity {
         return builderDialog;
     }
 
+    // Tạo dialog hướng dẫn vào cài đặt
     private AlertDialog.Builder buildAlertDeniedPermissionDialog() {
         AlertDialog.Builder builderDialog=new AlertDialog.Builder(this);
         builderDialog.setTitle("Notice")
@@ -533,6 +531,7 @@ public class AddFoodActivity extends AppCompatActivity {
         return builderDialog;
     }
 
+    // Tạo Intent để mở cài đặt ứng dụng
     private Intent createIntentToAppSetting() {
         Intent intent=new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         Uri uri= Uri.fromParts("package",getPackageName(),null);
@@ -540,11 +539,13 @@ public class AddFoodActivity extends AppCompatActivity {
         return intent;
     }
 
+    // Yêu cầu quyền truy cập bộ nhớ
     private void requestRuntimePermission() {
         ActivityCompat.requestPermissions(AddFoodActivity.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE
         },PERMISSION_REQUEST_CODE);
     }
 
+    // Kiểm tra xem đã có quyền chưa
     private boolean isPermissionGranted(String permission) {
         return checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED;
     }
