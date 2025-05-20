@@ -74,7 +74,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         initData();
 
     }
-
+// update initData
     private void initData() {
         FirebaseDatabase.getInstance().getReference("BillInfos").child(currentBill.getBillId()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
