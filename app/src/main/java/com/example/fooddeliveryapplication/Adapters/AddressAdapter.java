@@ -49,7 +49,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHold
     public AddressAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new AddressAdapter.ViewHolder(ItemAddressBinding.inflate(LayoutInflater.from(mContext), parent, false));
     }
-
+//Update address
     @Override
     public void onBindViewHolder(@NonNull AddressAdapter.ViewHolder holder, int position) {
         Address address = mAddresses.get(position);
