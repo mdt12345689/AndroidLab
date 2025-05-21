@@ -30,6 +30,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
+
+
 public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHolder>{
     private Context mContext;
     private List<Address> mAddresses;
