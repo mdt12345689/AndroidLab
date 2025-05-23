@@ -19,9 +19,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
-
-
 public class OrderActivity extends AppCompatActivity {
     private String userId;
     private ActivityOrderBinding binding;
@@ -32,7 +29,6 @@ public class OrderActivity extends AppCompatActivity {
     private LoadingDialog dialog;
 
     @Override
-    //update onCreate
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityOrderBinding.inflate(getLayoutInflater());
@@ -54,7 +50,7 @@ public class OrderActivity extends AppCompatActivity {
             }
         });
     }
-// update order by AnhTuan
+
     private void initUI() {
         OrderViewPaperAdapter viewPaperAdapter = new OrderViewPaperAdapter(OrderActivity.this, dsCurrentOrder, dsHistoryOrder, userId);
         binding.viewPaper2.setAdapter(viewPaperAdapter);
@@ -71,7 +67,7 @@ public class OrderActivity extends AppCompatActivity {
         })).attach();
         dialog.dismiss();
     }
-//update order active
+
     private void initData() {
         FirebaseDatabase.getInstance().getReference("Bills").addValueEventListener(new ValueEventListener() {
             @Override
